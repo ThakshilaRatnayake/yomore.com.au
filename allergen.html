@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allergen Information — Yo More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{background:linear-gradient(160deg,#FDF8F0 0%,#F0F9F0 100%)}
+.allergen-download{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:13px 26px;border-radius:var(--r);font-size:14px;font-weight:500;text-decoration:none;transition:background .2s;margin-top:26px}
+.allergen-download:hover{background:var(--pink-deep)}
+.gf-callout{max-width:760px;margin:0 auto 40px;padding:20px 26px;background:rgba(58,125,68,.08);border-left:3px solid var(--green-deep);border-radius:0 14px 14px 0;font-size:15px;color:var(--ink-mid);line-height:1.7}
+.gf-callout strong{color:var(--green-deep)}
+.allergen-legend{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding:18px 24px;background:rgba(26,18,8,.04);border-radius:16px;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-mid)}
+.leg-x{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#D4567A;color:#fff;font-size:12px;font-weight:700}
+.leg-o{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(26,18,8,.12);color:var(--ink-mid);font-size:12px;font-weight:700}
+.leg-v{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#3A7D44;color:#fff;font-size:13px}
+.allergen-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;justify-content:center}
+.filter-pill{border:1.5px solid rgba(26,18,8,.15);background:#fff;color:var(--ink-mid);padding:7px 18px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body)}
+.filter-pill:hover,.filter-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.allergen-table-wrap{overflow-x:auto;border-radius:20px;box-shadow:0 2px 24px rgba(26,18,8,.06);max-width:1200px;margin:0 auto}
+table.allergen-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;min-width:760px}
+.allergen-table thead th{background:var(--ink);color:var(--cream);padding:14px 8px;text-align:center;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.allergen-table thead th:first-child{text-align:left;padding-left:20px;min-width:180px}
+.allergen-table tbody tr{border-bottom:1px solid rgba(26,18,8,.06);transition:background .15s}
+.allergen-table tbody tr:hover{background:rgba(247,197,208,.18)}
+.allergen-table tbody tr.hidden-row{display:none}
+.allergen-table td{padding:11px 8px;text-align:center;vertical-align:middle}
+.allergen-table td:first-child{text-align:left;padding-left:20px;font-weight:500;color:var(--ink)}
+.allergen-table td.vegan-yes{background:rgba(58,125,68,.07)}
+.cell-x{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:#D4567A;color:#fff;font-size:11px;font-weight:700}
+.cell-o{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:rgba(26,18,8,.08);color:var(--ink-mid);font-size:11px;font-weight:600}
+.cell-v{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:#3A7D44;color:#fff;font-size:13px}
+.allergen-note{margin:28px auto 0;max-width:1200px;padding:18px 22px;background:rgba(212,86,122,.07);border-left:3px solid var(--pink-deep);border-radius:0 12px 12px 0;font-size:14px;color:var(--ink-mid);line-height:1.7}
+.allergen-note strong{color:var(--ink)}
+</style>
+</head>
+<body>
+
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Yo More"><span class="nav-tagline">Frozen Yogurt and Açai</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#flavors">Flavours</a></li>
+    <li><a href="toppings.html">Toppings</a></li>
+    <li><a href="rewards.html">Rewards</a></li>
+    <li><a href="locations.html" class="nav-cta">Find a shop</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <h1 class="section-title">Know what's<br><em>in your bowl</em></h1>
+  <p class="lead">Full allergen details for every topping on our bar. Filter by your dietary needs or download the complete PDF.</p>
+  <a href="allergen-info.pdf" download class="allergen-download">↓ Download full PDF</a>
+</section>
+
+<section style="background:var(--pale)">
+  <div class="gf-callout reveal">
+    <strong>🌾 Our yogurts:</strong> all of our frozen yogurt flavours are gluten free — except <strong>Biscoff</strong>, which contains gluten from the caramelised biscuit. The table below covers our toppings.
+  </div>
+
+  <div class="allergen-legend reveal">
+    <div class="legend-item"><span class="leg-x">✕</span> Contains or may contain allergen</div>
+    <div class="legend-item"><span class="leg-o">○</span> May contain traces (from supplier)</div>
+    <div class="legend-item"><span class="leg-v">✓</span> Vegan friendly</div>
+  </div>
+
+  <div class="allergen-filters reveal" id="allergenFilters">
+    <button class="filter-pill active" data-filter="all">All toppings</button>
+    <button class="filter-pill" data-filter="vegan">Vegan friendly</button>
+    <button class="filter-pill" data-filter="no-nuts">No peanuts</button>
+    <button class="filter-pill" data-filter="no-dairy">No dairy</button>
+    <button class="filter-pill" data-filter="no-gluten">No gluten</button>
+  </div>
+
+  <div class="allergen-table-wrap reveal">
+    <table class="allergen-table">
+      <thead>
+        <tr>
+          <th>Topping</th>
+          <th>🥜 Peanuts</th><th>🌳 Tree nuts</th><th>🫘 Soy</th><th>🥥 Coconut</th>
+          <th>🥛 Milk/Dairy</th><th>🌾 Wheat</th><th>🥚 Eggs</th><th>🌾 Gluten</th>
+          <th>🌿 Vegan</th><th>🌰 Sesame</th>
+        </tr>
+      </thead>
+      <tbody id="allergenBody"></tbody>
+    </table>
+  </div>
+
+  <div class="allergen-note reveal">
+    <strong>Important:</strong> Allergen information is provided as a guide only. Our products are prepared in environments where allergens including peanuts, tree nuts, milk, wheat, eggs, soy, and sesame are present. Cross-contamination is possible. If you have a severe allergy or dietary requirement, please speak to a team member before ordering. For seasonal product allergen information, email <strong>operations@yomore.com.au</strong>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="logo.png" alt="Yo More"><span class="footer-tagline">Frozen Yogurt and Açai</span></div>
+      <p>Frozen yogurt the way it should be — fresh, real, and made for you.</p>
+    </div>
+    <div class="footer-col"><h4>Menu</h4><ul>
+      <li><a href="index.html#flavors">All flavours</a></li>
+      <li><a href="toppings.html">Toppings</a></li>
+      </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="rewards.html">Gift cards & loyalty</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Follow us</h4><ul>
+      <li><a href="https://www.instagram.com/yomoreaustralia?igsh=MTN5N2tnbDkya3oxaQ==" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="https://www.facebook.com/share/1CuPMBVH1t/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="mailto:operations@yomore.com.au">Email us</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Yo More. All rights reserved.</span>
+    <span>Made with love in Victoria 🍦</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="shared.js"></script>
+<script>
+const allergens=[
+  {name:"Almonds",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Biscoff Spread",p:'o',t:'o',s:'x',c:'o',d:'o',w:'o',e:'o',g:'x',v:true,ses:'o'},
+  {name:"Blueberry Compote",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Boysenberry + BC Compote",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Buenazzo Sauce",p:'o',t:'x',s:'o',c:'x',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Butterscotch Sauce",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Choc Chip Cookie Dough",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'x',g:'x',v:true,ses:'o'},
+  {name:"Choc Chunk Cookie Cake",p:'o',t:'x',s:'o',c:'x',d:'x',w:'x',e:'x',g:'o',v:false,ses:'o'},
+  {name:"Choc Wafer Roll",p:'o',t:'x',s:'o',c:'o',d:'x',w:'o',e:'x',g:'x',v:true,ses:'o'},
+  {name:"Chocolate Sauce",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Chocolate Fudge Brownie",p:'o',t:'x',s:'o',c:'x',d:'x',w:'x',e:'x',g:'x',v:false,ses:'o'},
+  {name:"Chocolate Soil",p:'o',t:'x',s:'o',c:'x',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Cornflake Crunch",p:'o',t:'x',s:'o',c:'x',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Crispy Oats Granola",p:'o',t:'o',s:'o',c:'o',d:'x',w:'o',e:'o',g:'x',v:false,ses:'o'},
+  {name:"Crumble",p:'o',t:'x',s:'o',c:'x',d:'x',w:'o',e:'x',g:'o',v:false,ses:'o'},
+  {name:"Dark Choc Ready",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'v',v:true,ses:'o'},
+  {name:"Maltesers",p:'o',t:'x',s:'o',c:'x',d:'x',w:'x',e:'x',g:'o',v:false,ses:'o'},
+  {name:"Milk Balls",p:'o',t:'x',s:'o',c:'x',d:'x',w:'x',e:'x',g:'o',v:false,ses:'o'},
+  {name:"Milk Chocolate Drops",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Mini Mochi",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"M&M's",p:'o',t:'o',s:'o',c:'x',d:'x',w:'o',e:'x',g:'o',v:false,ses:'o'},
+  {name:"Nutella",p:'o',t:'x',s:'o',c:'x',d:'x',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Oreo Crumb with Creme",p:'o',t:'o',s:'o',c:'o',d:'x',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Oreos",p:'o',t:'x',s:'o',c:'x',d:'x',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Peanut Butter",p:'x',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Popping Pearls",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Rainbow Sprinkles",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Raspberry Coulis",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+  {name:"Sour Straps",p:'o',t:'o',s:'o',c:'o',d:'o',w:'o',e:'x',g:'o',v:true,ses:'o'},
+  {name:"Wafer Disks",p:'o',t:'x',s:'o',c:'o',d:'x',w:'o',e:'x',g:'x',v:true,ses:'o'},
+  {name:"White Choc Ready",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:false,ses:'o'},
+  {name:"Zebra Coconut",p:'o',t:'x',s:'o',c:'o',d:'o',w:'o',e:'o',g:'o',v:true,ses:'o'},
+];
+function cell(v){
+  if(v==='x')return '<span class="cell-x">✕</span>';
+  if(v==='v')return '<span class="cell-v">✓</span>';
+  return '<span class="cell-o">○</span>';
+}
+const tb=document.getElementById('allergenBody');
+allergens.forEach(a=>{
+  const tr=document.createElement('tr');
+  tr.dataset.vegan=a.v?'1':'0';
+  tr.dataset.nopeanut=a.p==='o'?'1':'0';
+  tr.dataset.nodairy=a.d==='o'?'1':'0';
+  tr.dataset.nogluten=(a.g==='o'||a.g==='v')?'1':'0';
+  tr.innerHTML=`<td>${a.name}</td><td>${cell(a.p)}</td><td>${cell(a.t)}</td><td>${cell(a.s)}</td><td>${cell(a.c)}</td><td>${cell(a.d)}</td><td>${cell(a.w)}</td><td>${cell(a.e)}</td><td>${cell(a.g)}</td><td class="${a.v?'vegan-yes':''}">${a.v?'<span class="cell-v">✓</span>':'<span class="cell-o">○</span>'}</td><td>${cell(a.ses)}</td>`;
+  tb.appendChild(tr);
+});
+document.getElementById('allergenFilters').addEventListener('click',e=>{
+  const pill=e.target.closest('.filter-pill');if(!pill)return;
+  document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
+  pill.classList.add('active');
+  const f=pill.dataset.filter;
+  document.querySelectorAll('#allergenBody tr').forEach(r=>{
+    let show=true;
+    if(f==='vegan')show=r.dataset.vegan==='1';
+    if(f==='no-nuts')show=r.dataset.nopeanut==='1';
+    if(f==='no-dairy')show=r.dataset.nodairy==='1';
+    if(f==='no-gluten')show=r.dataset.nogluten==='1';
+    r.classList.toggle('hidden-row',!show);
+  });
+});
+</script>
+</body>
+</html>

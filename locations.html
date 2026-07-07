@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find a Shop — Yo More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{background:linear-gradient(160deg,#FDF8F0 0%,#FCEEF2 100%)}
+.location-section{background:var(--ink);color:var(--cream)}
+.location-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.location-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--rc);padding:38px 34px;transition:border-color .2s,background .2s}
+.location-card:hover{background:rgba(255,255,255,.08);border-color:rgba(247,197,208,.35)}
+.location-card h3{font-family:var(--font-display);font-size:26px;font-weight:700;margin-bottom:10px;color:var(--cream)}
+.location-card p{font-size:15px;color:rgba(255,255,255,.5);line-height:1.65}
+.location-badge{display:inline-block;background:var(--pink-deep);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;border-radius:var(--r);margin-bottom:16px;letter-spacing:.05em}
+.location-hours{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.09)}
+.location-hours table{width:100%;border-collapse:collapse;font-size:14px}
+.location-hours td{padding:4px 0}
+.location-hours td:last-child{text-align:right;color:rgba(255,255,255,.85);font-weight:500}
+.location-hours td:first-child{color:rgba(255,255,255,.4)}
+.loc-link{display:inline-block;margin-top:18px;font-size:13px;color:var(--pink);text-decoration:none}
+.loc-link:hover{opacity:.7}
+.open-now{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;margin-right:6px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</head>
+<body>
+
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Yo More"><span class="nav-tagline">Frozen Yogurt and Açai</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#flavors">Flavours</a></li>
+    <li><a href="toppings.html">Toppings</a></li>
+    <li><a href="rewards.html">Rewards</a></li>
+    <li><a href="locations.html" class="nav-cta active">Find a shop</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <p class="section-label">Find us</p>
+  <h1 class="section-title">Come say <em>hello</em></h1>
+  <p class="lead">Two shops, one obsession with great froyo. Drop in — the topping bar is waiting.</p>
+</section>
+
+<section class="location-section">
+  <div class="location-cards">
+
+    <div class="location-card reveal">
+      <span class="location-badge">Now open</span>
+      <h3>Yo More Brunswick</h3>
+      <p><a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" rel="noopener" style="color:rgba(255,255,255,.6);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;">377 Sydney Rd<br>Brunswick VIC 3056</a></p>
+      <p style="margin-top:10px;"><a href="tel:0391243885" style="color:rgba(255,255,255,.45);text-decoration:none;">(03) 9124 3885</a></p>
+      <div class="location-hours">
+        <table>
+          <tr><td>Monday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Tuesday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Wednesday</td><td>12 – 9:30 pm</td></tr>
+          <tr><td>Thursday</td><td>12 – 9:30 pm</td></tr>
+          <tr><td>Friday</td><td>12 – 10 pm</td></tr>
+          <tr><td>Saturday</td><td>12 – 10 pm</td></tr>
+          <tr><td>Sunday</td><td>12 – 9:30 pm</td></tr>
+        </table>
+        <a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" class="loc-link">Get directions →</a>
+      </div>
+    </div>
+
+    <div class="location-card reveal reveal-delay-1">
+      <span class="location-badge">Now open</span>
+      <h3>Yo More Geelong</h3>
+      <p><a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" rel="noopener" style="color:rgba(255,255,255,.6);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;">85 Ryrie St<br>Geelong VIC 3220</a></p>
+      <p style="margin-top:10px;"><a href="tel:0391254202" style="color:rgba(255,255,255,.45);text-decoration:none;">(03) 9125 4202</a></p>
+      <div class="location-hours">
+        <table>
+          <tr><td>Monday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Tuesday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Wednesday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Thursday</td><td>2 – 9:30 pm</td></tr>
+          <tr><td>Friday</td><td>2 – 10 pm</td></tr>
+          <tr><td>Saturday</td><td>1 – 10 pm</td></tr>
+          <tr><td>Sunday</td><td>1 – 9:30 pm</td></tr>
+        </table>
+        <a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" class="loc-link">Get directions →</a>
+      </div>
+    </div>
+
+    <div class="location-card reveal reveal-delay-2" style="opacity:.55">
+      <span class="location-badge" style="background:rgba(255,255,255,.12);color:rgba(255,255,255,.6);">Coming soon</span>
+      <h3>What's next?</h3>
+      <p>We're growing across Victoria. Follow us to be first to know where we open next.</p>
+      <div class="location-hours" style="border-top-color:rgba(255,255,255,.05)">
+        <a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener" class="loc-link" style="margin-top:8px">Follow @yo.more.australia →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="logo.png" alt="Yo More"><span class="footer-tagline">Frozen Yogurt and Açai</span></div>
+      <p>Frozen yogurt the way it should be — fresh, real, and made for you.</p>
+      <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,.35)">Brunswick: <a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" style="color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:2px;">377 Sydney Rd VIC 3056</a> · <a href="tel:0391243885" style="color:rgba(255,255,255,.35);text-decoration:none">(03) 9124 3885</a><br>Geelong: <a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" style="color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:2px;">85 Ryrie St VIC 3220</a> · <a href="tel:0391254202" style="color:rgba(255,255,255,.35);text-decoration:none">(03) 9125 4202</a></p>
+    </div>
+    <div class="footer-col"><h4>Menu</h4><ul>
+      <li><a href="index.html#flavors">All flavours</a></li>
+      <li><a href="toppings.html">Toppings</a></li>
+      <li><a href="allergen.html">Allergen info</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="rewards.html">Gift cards & loyalty</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Follow us</h4><ul>
+      <li><a href="https://www.instagram.com/yomoreaustralia?igsh=MTN5N2tnbDkya3oxaQ==" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="https://www.facebook.com/share/1CuPMBVH1t/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="mailto:operations@yomore.com.au">Email us</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Yo More. All rights reserved.</span>
+    <span>Made with love in Victoria 🍦</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="shared.js"></script>
+</body>
+</html>

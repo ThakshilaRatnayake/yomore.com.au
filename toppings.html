@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toppings — Yo More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{background:linear-gradient(160deg,#FDF8F0 0%,#FFF3E6 100%)}
+.top-cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.cat-pill{border:1.5px solid rgba(26,18,8,.15);background:#fff;color:var(--ink-mid);padding:8px 20px;border-radius:var(--r);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body)}
+.cat-pill:hover,.cat-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.toppings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;max-width:1200px;margin:0 auto}
+.top-card{background:#fff;border-radius:20px;overflow:hidden;transition:transform .22s,box-shadow .22s;box-shadow:0 2px 12px rgba(26,18,8,.05)}
+.top-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(26,18,8,.12)}
+.top-card.hidden{display:none}
+.top-img{height:130px;display:flex;align-items:center;justify-content:center;font-size:58px;position:relative}
+.top-img .cat-badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:var(--r);background:rgba(255,255,255,.85);color:var(--ink-mid)}
+.top-body{padding:18px 18px 22px}
+.top-name{font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+.top-desc{font-size:13px;color:var(--ink-mid);line-height:1.55}
+.toppings-section{background:var(--pale)}
+.allergen-cta{text-align:center;margin-top:48px}
+.allergen-cta p{font-size:14px;color:var(--ink-mid);margin-bottom:16px}
+</style>
+</head>
+<body>
+
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Yo More"><span class="nav-tagline">Frozen Yogurt and Açai</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#flavors">Flavours</a></li>
+    <li><a href="toppings.html" class="active">Toppings</a></li>
+    <li><a href="rewards.html">Rewards</a></li>
+    <li><a href="locations.html" class="nav-cta">Find a shop</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <p class="section-label">The topping bar</p>
+  <h1 class="section-title">Pile it <em>high</em></h1>
+  <p class="lead">Fresh fruit, indulgent sauces, biscuits, boba, mochi and more. Every topping on our bar, ready for your bowl.</p>
+  <div class="top-cats" id="topCats">
+    <button class="cat-pill active" data-cat="all">All toppings</button>
+    <button class="cat-pill" data-cat="fruit">🍓 Fresh fruit</button>
+    <button class="cat-pill" data-cat="sauce">🍯 Sauces</button>
+    <button class="cat-pill" data-cat="biscuit">🍪 Biscuits & cakes</button>
+    <button class="cat-pill" data-cat="candy">🍬 Lollies & candy</button>
+    <button class="cat-pill" data-cat="crunch">🥜 Crunch & nuts</button>
+    <button class="cat-pill" data-cat="boba">🧋 Boba & mochi</button>
+  </div>
+</section>
+
+<section class="toppings-section">
+  <div class="toppings-grid" id="toppingsGrid"></div>
+  <div class="allergen-cta reveal">
+    <p>Have an allergy or dietary requirement?</p>
+    <a href="allergen.html" class="btn-secondary">View full allergen information →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="logo.png" alt="Yo More"><span class="footer-tagline">Frozen Yogurt and Açai</span></div>
+      <p>Frozen yogurt the way it should be — fresh, real, and made for you.</p>
+    </div>
+    <div class="footer-col"><h4>Menu</h4><ul>
+      <li><a href="index.html#flavors">All flavours</a></li>
+      <li><a href="toppings.html">Toppings</a></li>
+      </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="rewards.html">Gift cards & loyalty</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Follow us</h4><ul>
+      <li><a href="https://www.instagram.com/yomoreaustralia?igsh=MTN5N2tnbDkya3oxaQ==" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="https://www.facebook.com/share/1CuPMBVH1t/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="mailto:operations@yomore.com.au">Email us</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Yo More. All rights reserved.</span>
+    <span>Made with love in Victoria 🍦</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="shared.js"></script>
+<script>
+const toppings=[
+  // Fresh fruit
+  {name:"Strawberry",desc:"Sweet and fresh strawberry slices.",icon:"🍓",cat:"fruit",bg:"#F7C5D0"},
+  {name:"Blueberry",desc:"Plump blueberries with a natural sweet-tart taste.",icon:"🫐",cat:"fruit",bg:"#DDD5F5"},
+  {name:"Kiwi",desc:"Fresh kiwi with a balanced sweet and tart flavour.",icon:"🥝",cat:"fruit",bg:"#C8E6C2"},
+  {name:"Lychee",desc:"Delicately sweet and floral lychee pieces.",icon:"🤍",cat:"fruit",bg:"#FFF0F3"},
+  {name:"Passionfruit Coulis",desc:"Tangy tropical passionfruit drizzle.",icon:"🍈",cat:"fruit",bg:"#FDE68A"},
+  // Sauces
+  {name:"Biscoff Sauce",desc:"Smooth, rich caramelised biscuit sauce with a warm spiced flavour.",icon:"🍯",cat:"sauce",bg:"#F5CBA7"},
+  {name:"Chocolate Sauce",desc:"Classic chocolate sauce — sweet and indulgent.",icon:"🍫",cat:"sauce",bg:"#D7C0A3"},
+  {name:"Strawberry Sauce",desc:"Sweet and fruity strawberry-flavoured sauce.",icon:"🍓",cat:"sauce",bg:"#F7C5D0"},
+  {name:"Maple Syrup",desc:"Pure golden syrup with a rich, sweet maple flavour.",icon:"🍁",cat:"sauce",bg:"#FECBA1"},
+  {name:"Bueno Sauce",desc:"Smooth, rich and buttery — inspired by the iconic Kinder Bueno bar.",icon:"🥛",cat:"sauce",bg:"#FFF3E0"},
+  {name:"Pistachio Sauce",desc:"Rich, creamy sauce with smooth, nutty pistachio flavour.",icon:"💚",cat:"sauce",bg:"#C8E6C2"},
+  // Biscuits & cakes
+  {name:"Tim Tam",desc:"Iconic chocolate-coated biscuit with a rich cream filling.",icon:"🍫",cat:"biscuit",bg:"#D7C0A3"},
+  {name:"Mini Oreo",desc:"Bite-sized chocolate sandwich biscuits with creamy vanilla filling.",icon:"🍪",cat:"biscuit",bg:"#E8E1D8"},
+  {name:"Biscoff Soil",desc:"Crumbled caramelised biscuit — the perfect spiced crunch.",icon:"🟤",cat:"biscuit",bg:"#F5CBA7"},
+  {name:"Chocolate Brownie",desc:"Rich, fudgy chocolate cake with a moist, decadent texture.",icon:"🍰",cat:"biscuit",bg:"#D7C0A3"},
+  {name:"Caramel Slice",desc:"Classic layered treat — crisp base, rich caramel, chocolate topping.",icon:"🧈",cat:"biscuit",bg:"#FECBA1"},
+  {name:"Choc Chip Cookie Dough",desc:"Creamy vanilla-style dough blended with sweet chocolate chips.",icon:"🍪",cat:"biscuit",bg:"#F5E6CA"},
+  {name:"Vanilla Biscuits",desc:"Crisp vanilla biscuits with a light, sweet flavour.",icon:"🥠",cat:"biscuit",bg:"#FFF9C4"},
+  {name:"Chocolate Biscuit Pieces",desc:"Crunchy chocolate biscuit pieces.",icon:"🍩",cat:"biscuit",bg:"#E0CDb8"},
+  {name:"Lemon Crumble",desc:"Zesty lemon crumble with a refreshing citrus kick.",icon:"🍋",cat:"biscuit",bg:"#FDE68A"},
+  // Candy
+  {name:"Mini Marshmallows",desc:"Soft, fluffy marshmallows for extra sweetness.",icon:"☁️",cat:"candy",bg:"#FFF0F3"},
+  {name:"Gummy Bears",desc:"Chewy, fruity gummies.",icon:"🐻",cat:"candy",bg:"#FECBA1"},
+  {name:"Sour Stripes",desc:"Tangy and sweet candy strips for a zingy bite.",icon:"🌈",cat:"candy",bg:"#DDD5F5"},
+  {name:"M&M's",desc:"Colourful chocolate candies with a crunchy shell.",icon:"🔴",cat:"candy",bg:"#F7C5D0"},
+  {name:"White Choco Buttons",desc:"Smooth, sweet white chocolate drops.",icon:"⚪",cat:"candy",bg:"#FFF8F0"},
+  // Crunch & nuts
+  {name:"Coconut Flakes",desc:"Lightly toasted coconut flakes with a tropical crunch.",icon:"🥥",cat:"crunch",bg:"#FFF3E0"},
+  {name:"Crushed Peanuts",desc:"Crunchy roasted peanuts broken into small pieces.",icon:"🥜",cat:"crunch",bg:"#F5CBA7"},
+  {name:"Almond Flakes",desc:"Thin, crunchy slices of almonds.",icon:"🌰",cat:"crunch",bg:"#F5E6CA"},
+  {name:"Pistachio Crumble",desc:"Crunchy pistachio pieces with a nutty aroma.",icon:"💚",cat:"crunch",bg:"#C8E6C2"},
+  {name:"Low Sugar Granola",desc:"Crunchy granola with reduced sugar — a lighter option.",icon:"🌾",cat:"crunch",bg:"#FDE68A"},
+  // Boba & mochi
+  {name:"Mango Boba",desc:"Juicy mango pearls that pop with flavour.",icon:"🧋",cat:"boba",bg:"#FECBA1"},
+  {name:"Strawberry Boba",desc:"Sweet strawberry pearls with a burst of fruitiness.",icon:"🧋",cat:"boba",bg:"#F7C5D0"},
+  {name:"Strawberry Mochi",desc:"Soft, chewy rice cake filled with sweet strawberry paste.",icon:"🍡",cat:"boba",bg:"#F7C5D0"},
+  {name:"Mango Mochi",desc:"Soft, chewy rice cake with a sweet, tropical mango filling.",icon:"🍡",cat:"boba",bg:"#FECBA1"},
+];
+const catNames={fruit:"Fruit",sauce:"Sauce",biscuit:"Biscuit",candy:"Candy",crunch:"Crunch",boba:"Boba"};
+const g=document.getElementById('toppingsGrid');
+toppings.forEach((t,i)=>{
+  const d=document.createElement('div');
+  d.className='top-card reveal'+(i%4===1?' reveal-delay-1':i%4===2?' reveal-delay-2':i%4===3?' reveal-delay-3':'');
+  d.dataset.cat=t.cat;
+  d.innerHTML=`<div class="top-img" style="background:${t.bg}"><span class="cat-badge">${catNames[t.cat]}</span>${t.icon}</div>
+    <div class="top-body"><div class="top-name">${t.name}</div><div class="top-desc">${t.desc}</div></div>`;
+  revealObs.observe(d);
+  g.appendChild(d);
+});
+document.getElementById('topCats').addEventListener('click',e=>{
+  const pill=e.target.closest('.cat-pill');if(!pill)return;
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+  pill.classList.add('active');
+  const cat=pill.dataset.cat;
+  document.querySelectorAll('.top-card').forEach(c=>{
+    c.classList.toggle('hidden',cat!=='all'&&c.dataset.cat!==cat);
+  });
+});
+</script>
+</body>
+</html>

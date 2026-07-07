@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yo More — Frozen Yogurt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── IMMERSIVE 3D HERO ── */
+.hero{min-height:94vh;display:flex;align-items:center;justify-content:center;padding:60px 5vw;position:relative;overflow:hidden;z-index:1}
+#hero3d{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;max-width:1200px;width:100%;position:relative;z-index:2}
+.hero-eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:2px;background:var(--pink-deep)}
+.hero h1{font-family:var(--font-display);font-size:clamp(50px,6.5vw,92px);font-weight:700;line-height:.98;letter-spacing:-3px;margin-bottom:22px}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--pink-deep)}
+.hero-sub{font-size:18px;color:var(--ink-mid);max-width:420px;margin-bottom:34px;line-height:1.65}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+/* hero photo card */
+.hero-photo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-photo{width:100%;max-width:440px;border-radius:32px;box-shadow:0 30px 80px rgba(26,18,8,.22);transform:rotate(2deg);transition:transform .4s ease;position:relative;z-index:2}
+.hero-photo:hover{transform:rotate(0deg) scale(1.02)}
+.hero-photo img{width:100%;display:block;border-radius:32px}
+.photo-sticker{position:absolute;z-index:3;background:#fff;padding:10px 20px;border-radius:var(--r);font-family:var(--font-display);font-style:italic;font-size:16px;box-shadow:0 8px 24px rgba(26,18,8,.15);animation:stickerBob 4s ease-in-out infinite}
+.ps1{top:8%;left:-4%;color:var(--pink-deep)}
+.ps2{bottom:12%;right:-5%;color:var(--green-deep);animation-delay:1.4s}
+@keyframes stickerBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+/* gluten badge under hero */
+.gf-strip{background:var(--green);padding:16px 5vw;text-align:center;font-size:15px;color:var(--green-deep);font-weight:500;position:relative;z-index:1}
+.gf-strip strong{font-weight:600}
+/* ── PHOTO MARQUEE ── */
+.photo-marquee{background:var(--pale);padding:60px 0;overflow:hidden;position:relative;z-index:1}
+.pm-track{display:flex;gap:24px;animation:pmScroll 30s linear infinite;width:max-content}
+.pm-item{width:360px;height:440px;border-radius:24px;flex-shrink:0;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pm-item img{width:100%;height:100%;object-fit:cover}
+.pm-emoji{font-size:90px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.12))}
+@keyframes pmScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ── COMPACT FLAVOUR TILES ── */
+.flavors-section{background:var(--pale)}
+.flavors-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:20px}
+.flavors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:14px}
+.flavor-tile{border-radius:18px;padding:18px 16px;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s;min-height:130px;display:flex;flex-direction:column;justify-content:flex-end}
+.flavor-tile:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(26,18,8,.12)}
+.ft-icon{font-size:30px;position:absolute;top:14px;right:14px}
+.ft-name{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.3px;line-height:1.15}
+.ft-tag{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.ft-gf{position:absolute;top:14px;left:14px;background:rgba(58,125,68,.9);color:#fff;font-size:9px;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:var(--r)}
+.ft-detail{position:fixed;inset:0;background:rgba(26,18,8,.5);backdrop-filter:blur(6px);z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.ft-detail.open{display:flex}
+.ft-modal{background:#fff;border-radius:28px;padding:44px 40px;max-width:420px;width:100%;position:relative;text-align:center}
+.ft-modal .ft-micon{font-size:64px;display:block;margin-bottom:16px}
+.ft-modal h3{font-family:var(--font-display);font-size:30px;font-weight:700;margin-bottom:12px}
+.ft-modal p{font-size:15px;color:var(--ink-mid);line-height:1.65;margin-bottom:18px}
+.ft-modal .ft-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ft-modal .badge{font-size:11px;font-weight:600;padding:5px 14px;border-radius:var(--r)}
+.ft-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:26px;cursor:pointer;color:var(--ink-light);line-height:1}
+.gluten-note{margin-top:28px;padding:18px 24px;background:rgba(58,125,68,.08);border-left:3px solid var(--green-deep);border-radius:0 14px 14px 0;font-size:14px;color:var(--ink-mid);line-height:1.7}
+.gluten-note strong{color:var(--green-deep)}
+/* ── HOW ── */
+.how-section{background:var(--ink);color:var(--cream);overflow:hidden;padding:40px 5vw}
+.price-pill{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:var(--ink);font-family:var(--font-display);font-size:19px;font-weight:700;padding:8px 20px;border-radius:var(--r);margin-top:10px;letter-spacing:-.5px}
+.price-pill small{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.04em;opacity:.7}
+.how-section .section-label{color:rgba(255,255,255,.4)}
+.how-section .section-title{color:var(--cream);margin-bottom:4px}
+.how-section .section-title em{color:var(--pink)}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:24px}
+.how-step{padding:20px 22px;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden}
+.how-step:last-child{border-right:none}
+.how-step::before{content:attr(data-n);position:absolute;top:-8px;right:10px;font-family:var(--font-display);font-size:80px;font-weight:700;color:rgba(255,255,255,.04);line-height:1}
+.how-icon-wrap{width:42px;height:42px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.how-step:nth-child(1) .how-icon-wrap{background:var(--pink)}
+.how-step:nth-child(2) .how-icon-wrap{background:var(--teal)}
+.how-step:nth-child(3) .how-icon-wrap{background:var(--yellow)}
+.how-step:nth-child(4) .how-icon-wrap{background:var(--purple)}
+.how-step h3{font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:6px;color:var(--cream)}
+.how-step p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
+/* ── VALUES ── */
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:20px}
+.value-card{border:1.5px solid rgba(26,18,8,.09);border-radius:14px;padding:14px 14px;transition:border-color .2s;background:var(--cream);display:flex;align-items:flex-start;gap:10px}
+.value-card:hover{border-color:var(--pink-deep);transform:translateY(-4px)}
+.value-icon{font-size:22px;flex-shrink:0;line-height:1.3}
+.value-card h3{font-family:var(--font-display);font-size:14.5px;font-weight:700;margin-bottom:2px}
+.value-card p{font-size:11.5px;color:var(--ink-mid);line-height:1.45}
+/* ── CTA ── */
+.cta-section{background:linear-gradient(135deg,#F7C5D0 0%,#FECBA1 50%,#FDE68A 100%);text-align:center;padding:56px 5vw;overflow:hidden;position:relative}
+.cta-section .section-label{justify-content:center;color:var(--ink-mid)}
+.cta-circle{position:absolute;border-radius:50%;opacity:.22}
+.cc1{width:220px;height:220px;background:var(--pink-deep);top:-70px;left:-50px}
+.cc2{width:150px;height:150px;background:var(--green);bottom:-30px;right:5%}
+.cta-section p.cta-sub{font-size:15px;color:var(--ink-mid);max-width:420px;margin:0 auto 24px}
+.hero-eyebrow{justify-content:center}
+.hero-sub{margin:0 auto 34px}
+.hero-actions{justify-content:center}
+.hero-photo{max-width:340px;margin-top:30px}
+.how-grid{grid-template-columns:1fr 1fr}
+.how-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+.flavors-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+/* TIKTOK */
+.tiktok-section{background:var(--pale);padding:70px 5vw;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:24px}
+.tt-phone{width:225px;height:400px;border-radius:32px;background:linear-gradient(160deg,#F7C5D0,#DDD5F5);position:relative;box-shadow:0 24px 54px rgba(26,18,8,.2);border:6px solid var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;text-decoration:none;transition:transform .3s}
+.tt-phone:hover{transform:translateY(-6px) rotate(-1deg)}
+.tt-play{width:56px;height:56px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff}
+.tt-phone span{font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--ink)}
+.tt-phone small{font-size:10px;color:var(--ink-mid);letter-spacing:.06em;text-transform:uppercase}
+.tt-text{max-width:360px}
+.tt-handle{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light)}
+/* PROMO POPUP */
+.promo-overlay{position:fixed;inset:0;background:rgba(26,18,8,.55);backdrop-filter:blur(6px);z-index:400;display:none;align-items:center;justify-content:center;padding:20px}
+.promo-overlay.open{display:flex}
+.promo-card{background:linear-gradient(150deg,#F7C5D0,#FECBA1);border-radius:28px;padding:44px 38px;max-width:430px;width:100%;text-align:center;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.3);animation:promoPop .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes promoPop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.promo-badge{display:inline-block;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:var(--r);margin-bottom:16px}
+.promo-card h3{font-family:var(--font-display);font-size:34px;font-weight:700;line-height:1.05;letter-spacing:-1px;color:var(--ink);margin-bottom:8px}
+.promo-card h3 em{font-style:italic;font-weight:300}
+.promo-price{font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--pink-deep);letter-spacing:-2px;line-height:1;margin:10px 0 4px}
+.promo-price small{font-size:16px;font-weight:500;font-family:var(--font-body);color:var(--ink-mid);letter-spacing:0}
+.promo-card p{font-size:14px;color:var(--ink-mid);line-height:1.6;margin-bottom:22px}
+.promo-close{position:absolute;top:14px;right:18px;background:rgba(255,255,255,.6);border:none;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--ink)}
+.flavor-filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:24px}
+.filter-pill{border:1.5px solid rgba(26,18,8,.15);background:#fff;color:var(--ink-mid);padding:7px 18px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font-body)}
+.filter-pill:hover,.filter-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.ft-hidden{display:none!important}
+.ft-loc{display:inline-block;margin-top:6px;font-size:9px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding:2px 8px;border-radius:var(--r);background:rgba(255,255,255,.6);color:var(--ink-mid)}
+</style>
+</head>
+<body>
+
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Yo More"><span class="nav-tagline">Frozen Yogurt and Açai</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#flavors">Flavours</a></li>
+    <li><a href="toppings.html">Toppings</a></li>
+    <li><a href="rewards.html">Rewards</a></li>
+    <li><a href="locations.html" class="nav-cta">Find a shop</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-inner" id="tickerInner"></div></div>
+
+<!-- HERO with full-width 3D background -->
+<section class="hero">
+  <canvas id="hero3d"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Real fruit. Real culture. Real good.</p>
+      <h1>Life's better<br>with <em>more</em><br>froyo</h1>
+      <p class="hero-sub">Signature flavours made fresh daily — and almost all of them gluten free. Build your bowl, top it your way.</p>
+      <div class="hero-actions">
+        <a href="#flavors" class="btn-primary">See our flavours</a>
+        <a href="toppings.html" class="btn-secondary">Explore toppings →</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-sticker ps1">fresh daily ✦</div>
+      <div class="photo-sticker ps2">build your own!</div>
+      <div class="hero-photo"><img src="froyo-cups.jpg" alt="Two Yo More frozen yogurt cups loaded with toppings"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLUTEN FREE STRIP -->
+<div class="gf-strip">🌾 <strong>Good news:</strong> all of our frozen yogurts are gluten free — except Biscoff.</div>
+
+
+<!-- COMPACT FLAVOURS -->
+<section class="flavors-section" id="flavors">
+  <div class="flavors-header">
+    <div>
+      <p class="section-label reveal">The lineup</p>
+      <h2 class="section-title reveal reveal-delay-1">So many flavours.<br><em>Zero compromises.</em></h2>
+    </div>
+    <p class="reveal reveal-delay-2" style="max-width:300px;color:var(--ink-mid);font-size:15px;">Tap any tile for the full story. Freshly churned every single morning.</p>
+  </div>
+  <div class="flavor-filters" id="flavorFilters" style="display:none">
+    <button class="filter-pill active" data-loc="all">All flavours</button>
+    <button class="filter-pill" data-loc="brunswick">Brunswick</button>
+    <button class="filter-pill" data-loc="geelong">Geelong</button>
+  </div>
+  <div class="flavors-grid" id="flavorsGrid"></div>
+</section>
+
+<!-- PHOTO MARQUEE -->
+<div class="photo-marquee">
+  <div class="pm-track" id="pmTrack"></div>
+</div>
+
+<!-- HOW -->
+<section class="how-section" id="how">
+  <p class="section-label reveal">The process</p>
+  <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:6px">Four steps to <em>your perfect bowl</em></h2>
+  <div class="price-pill reveal reveal-delay-2">$4.19 <small>per 100g — one price, everything included</small></div>
+  <div class="how-grid">
+    <div class="how-step reveal" data-n="1"><div class="how-icon-wrap">🍦</div><h3>Pick your base</h3><p>Choose from eight flavours or swirl two together. Self-serve or let our crew guide you.</p></div>
+    <div class="how-step reveal reveal-delay-1" data-n="2"><div class="how-icon-wrap">🍓</div><h3>Load the toppings</h3><p>Fresh fruit, sauces, mochi, boba, cookie dough — the topping bar is entirely yours.</p></div>
+    <div class="how-step reveal reveal-delay-2" data-n="3"><div class="how-icon-wrap">⚖️</div><h3>Weigh & pay</h3><p>You build it, we weigh it. Just $4.19 per 100g — yogurt and toppings included.</p></div>
+    <div class="how-step reveal reveal-delay-3" data-n="4"><div class="how-icon-wrap">😋</div><h3>Enjoy every bite</h3><p>Find a spot, dig in, and come back for round two. We won't judge.</p></div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="padding:44px 5vw">
+  <p class="section-label reveal">Why Yo More</p>
+  <h2 class="section-title reveal reveal-delay-1">The stuff we <em>actually care about</em></h2>
+  <div class="values-grid">
+    <div class="value-card reveal"><span class="value-icon">🌿</span><div><h3>Real ingredients</h3><p>No artificial flavours, no shortcuts. Real fruit, real culture, recipes we're proud of.</p></div></div>
+    <div class="value-card reveal reveal-delay-1"><span class="value-icon">🌾</span><div><h3>Gluten free first</h3><p>Six of our eight yogurts are gluten free — only Biscoff and Cookies &amp; Cream contain gluten.</p></div></div>
+    <div class="value-card reveal reveal-delay-2"><span class="value-icon">🌱</span><div><h3>Vegan options</h3><p>Our Charcoal Coconut is 100% plant-based, creamy and refreshing.</p></div></div>
+    <div class="value-card reveal reveal-delay-3"><span class="value-icon">✨</span><h3>Fresh daily</h3><p>Every flavour is churned fresh each morning. If it's in the machine, it was made today.</p></div>
+  </div>
+</section>
+
+<!-- TIKTOK -->
+<section class="tiktok-section">
+  <div style="max-width:520px">
+    <p class="section-label" style="justify-content:center">On TikTok</p>
+    <h2 class="section-title" style="margin-bottom:0">Froyo, but make it <em>a moment</em></h2>
+  </div>
+  <div id="ttEmbedWrap" style="max-width:325px;width:100%">
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@yo.more.australia/video/7649035087647984916"
+      data-video-id="7649035087647984916" data-embed-from="embed_page"
+      style="max-width:325px;min-width:325px;border:none;margin:0">
+      <section>
+        <a target="_blank" title="@yo.more.australia" href="https://www.tiktok.com/@yo.more.australia?refer=embed">@yo.more.australia</a>
+      </section>
+    </blockquote>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-circle cc1"></div><div class="cta-circle cc2"></div>
+  <p class="section-label reveal">What are you waiting for?</p>
+  <h2 class="section-title reveal reveal-delay-1">Your perfect bowl<br><em>is waiting</em></h2>
+  <p class="cta-sub reveal reveal-delay-2">Come in, build your bowl, and see what all the fuss is about.</p>
+  <a href="locations.html" class="btn-primary reveal reveal-delay-3">Find your nearest Yo More</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="logo.png" alt="Yo More"><span class="footer-tagline">Frozen Yogurt and Açai</span></div>
+      <p>Frozen yogurt the way it should be — fresh, real, and made for you. Two locations in Victoria.</p>
+      <p style="margin-top:12px;font-size:13px;color:rgba(255,255,255,.35)">Brunswick: <a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" style="color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:2px;">377 Sydney Rd VIC 3056</a> · <a href="tel:0391243885" style="color:rgba(255,255,255,.35);text-decoration:none">(03) 9124 3885</a><br>Geelong: <a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" style="color:rgba(255,255,255,.45);text-decoration:underline;text-underline-offset:2px;">85 Ryrie St VIC 3220</a> · <a href="tel:0391254202" style="color:rgba(255,255,255,.35);text-decoration:none">(03) 9125 4202</a></p>
+    </div>
+    <div class="footer-col"><h4>Menu</h4><ul>
+      <li><a href="index.html#flavors">All flavours</a></li>
+      <li><a href="toppings.html">Toppings</a></li>
+      <li><a href="allergen.html">Allergen info</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Company</h4><ul>
+      <li><a href="#">Our story</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="rewards.html">Gift cards & loyalty</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Follow us</h4><ul>
+      <li><a href="https://www.instagram.com/yomoreaustralia?igsh=MTN5N2tnbDkya3oxaQ==" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a href="https://www.facebook.com/share/1CuPMBVH1t/" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a href="mailto:operations@yomore.com.au">Email us</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Yo More. All rights reserved.</span>
+    <span>Made with love in Victoria 🍦</span>
+  </div>
+</footer>
+
+<!-- PROMO POPUP -->
+<div class="promo-overlay" id="promoOverlay">
+  <div class="promo-card">
+    <button class="promo-close" id="promoClose">×</button>
+    <span class="promo-badge">Brunswick exclusive</span>
+    <h3>All you can eat<br><em>Mondays & Tuesdays</em></h3>
+    <div class="promo-price">$9.99 <small>per cup</small></div>
+    <p>For all the lovelies that follow us on social media 💕 Show us you follow @yo.more.australia in store at Brunswick and pile your cup as high as you like.</p>
+    <a href="https://www.tiktok.com/@yo.more.australia?_r=1&_t=ZS-97A8vqJ7vQV" target="_blank" rel="noopener" class="btn-primary" style="margin-right:8px">Follow & claim</a>
+    <a class="btn-secondary" id="promoDismiss" style="cursor:pointer">Maybe later</a>
+  </div>
+</div>
+
+<!-- Flavour modal -->
+<div class="ft-detail" id="ftDetail">
+  <div class="ft-modal">
+    <button class="ft-close" id="ftClose">×</button>
+    <span class="ft-micon" id="ftIcon"></span>
+    <h3 id="ftName"></h3>
+    <p id="ftDesc"></p>
+    <div class="ft-badges" id="ftBadges"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="shared.js"></script>
+<script>
+// ── TIKTOK IFRAME FALLBACK ──
+window.addEventListener('load',function(){
+  var fr=document.getElementById('ttFrame'),fb=document.getElementById('ttFallback');
+  if(!fr||!fb)return;
+  var loaded=false;
+  fr.addEventListener('load',function(){loaded=true});
+  setTimeout(function(){if(!loaded){fr.style.display='none';fb.style.display='flex'}},4500);
+});
+
+
+// ── PROMO POPUP ──
+const promo=document.getElementById('promoOverlay');
+setTimeout(()=>promo.classList.add('open'),1200);
+document.getElementById('promoClose').onclick=()=>promo.classList.remove('open');
+document.getElementById('promoDismiss').onclick=()=>promo.classList.remove('open');
+promo.addEventListener('click',e=>{if(e.target===promo)promo.classList.remove('open')});
+
+// ── FLAVOURS (compact tiles + modal) ──
+const flavors=[
+  {name:"Charcoal Coconut",desc:"Activated charcoal meets tropical coconut — striking dark colour, light clean taste. Vegan, gluten free and low fat.",icon:"🥥",bg:"#3A3A3A",color:"#e8e8e8",tag:"Vegan · GF · Low fat",gf:true,loc:"both"},
+  {name:"Wildberry Cheesecake",desc:"Rich creamy cheesecake swirled with wild berry — indulgent, fruity and gluten free.",icon:"🫐",bg:"#C9A8D4",color:"#3D0A4F",tag:"Gluten free",gf:true,loc:"both"},
+  {name:"Signature Tart",desc:"The original Yo More classic. Clean, tangy and refreshing — gluten free and low fat.",icon:"✨",bg:"#FDE68A",color:"#B45309",tag:"GF · Low fat",gf:true,loc:"both"},
+  {name:"Acai",desc:"Deep, rich acai loaded with antioxidants. Gluten free and packed with natural goodness.",icon:"🫐",bg:"#DDD5F5",color:"#5B3FA0",tag:"GF · Antioxidants",gf:true,loc:"both"},
+  {name:"Lime Watermelon",desc:"Zesty lime meets sweet juicy watermelon — refreshing, vibrant and totally gluten free.",icon:"🍉",bg:"#C8F5D0",color:"#1A6B35",tag:"GF · Low fat",gf:true,loc:"both"},
+  {name:"Crème Brûlée",desc:"Silky custard with caramelised sugar warmth — elegant, rich and gluten free.",icon:"🍮",bg:"#FCEBBF",color:"#8B5E17",tag:"Gluten free",gf:true,loc:"both"},
+  {name:"Cookies & Cream",desc:"Crushed chocolate cookies blended into smooth creamy froyo — a crowd favourite every time.",icon:"🍪",bg:"#E8E1D8",color:"#3D2B1F",tag:"Classic",gf:false,loc:"both"},
+  {name:"Bischoff",desc:"Caramelised Belgian biscuit spice churned into silky froyo — dangerously good.",icon:"🍯",bg:"#F5CBA7",color:"#884714",tag:"Cult favourite",gf:false,loc:"both"},
+];
+const grid=document.getElementById('flavorsGrid');
+const ftDetail=document.getElementById('ftDetail');
+flavors.forEach((f,i)=>{
+  const t=document.createElement('div');
+  t.className='flavor-tile reveal'+(i%4===1?' reveal-delay-1':i%4===2?' reveal-delay-2':i%4===3?' reveal-delay-3':'');
+  t.style.background=f.bg;
+  t.dataset.loc=f.loc;
+  const locBadge=f.loc!=='both'?`<span class="ft-loc">\u{1F4CD} ${f.loc==='geelong'?'Geelong':'Brunswick'} only</span>`:'';
+  t.innerHTML=`${f.gf?'<span class="ft-gf">GF</span>':''}<span class="ft-icon">${f.icon}</span><div class="ft-name" style="color:${f.color}">${f.name}</div><div class="ft-tag" style="color:${f.color}">${f.tag}</div>${locBadge}`;
+  t.addEventListener('click',()=>{
+    document.getElementById('ftIcon').textContent=f.icon;
+    document.getElementById('ftName').textContent=f.name;
+    document.getElementById('ftDesc').textContent=f.desc;
+    document.getElementById('ftBadges').innerHTML=
+      `<span class="badge" style="background:${f.bg};color:${f.color}">${f.tag}</span>`+
+      (f.gf?'<span class="badge" style="background:rgba(58,125,68,.12);color:#3A7D44">🌾 Gluten free</span>':'<span class="badge" style="background:rgba(212,86,122,.12);color:#D4567A">Contains gluten</span>')+
+      (f.loc!=='both'?'<span class="badge" style="background:rgba(26,18,8,.08);color:#5C4A2A">\u{1F4CD} '+(f.loc==='geelong'?'Geelong':'Brunswick')+' only</span>':'<span class="badge" style="background:rgba(26,18,8,.06);color:#5C4A2A">Both stores</span>');
+    ftDetail.classList.add('open');
+  });
+  revealObs.observe(t);
+  grid.appendChild(t);
+});
+document.getElementById('ftClose').addEventListener('click',()=>ftDetail.classList.remove('open'));
+ftDetail.addEventListener('click',e=>{if(e.target===ftDetail)ftDetail.classList.remove('open')});
+
+document.getElementById('flavorFilters').addEventListener('click',e=>{
+  const pill=e.target.closest('.filter-pill');if(!pill)return;
+  document.querySelectorAll('#flavorFilters .filter-pill').forEach(x=>x.classList.remove('active'));
+  pill.classList.add('active');
+  const loc=pill.dataset.loc;
+  document.querySelectorAll('#flavorsGrid .flavor-tile').forEach(t=>{
+    const fl=t.dataset.loc;
+    const show=(loc==='all')||(fl==='both')||(fl===loc);
+    t.classList.toggle('ft-hidden',!show);
+  });
+});
+
+// ── TICKER ──
+const ti=["Charcoal Coconut","Wildberry Cheesecake","Signature Tart","Acaí","Lime Watermelon","Crème Brûlée","Cookies & Cream","Bischoff"];
+const inner=document.getElementById('tickerInner');
+[...ti,...ti].forEach((x,i,a)=>{const s=document.createElement('span');s.className='ticker-item';s.innerHTML=x+(i<a.length-1?' <span class="ticker-dot">✦</span>':'');inner.appendChild(s)});
+
+// ── PHOTO MARQUEE ──
+const pmItems=[{img:'photos/p1.jpg'},{img:'photos/p2.jpg'},{img:'photos/p3.jpg'},{img:'photos/p4.jpg'},{img:'photos/p5.jpg'},{img:'photos/p6.jpg'},{img:'photos/p7.jpg'},{img:'photos/p8.jpg'},{img:'photos/p9.jpg'},{img:'photos/p10.jpg'},{img:'photos/p11.jpg'},{img:'photos/p12.jpg'},{img:'photos/p13.jpg'}];
+const track=document.getElementById('pmTrack');
+[...pmItems,...pmItems].forEach(p=>{
+  const d=document.createElement('div');
+  d.className='pm-item';
+  if(p.img){d.innerHTML=`<img src="${p.img}" alt="Yo More froyo" style="object-position:${p.pos||'center'}">`}
+  else{d.style.background=p.bg;d.innerHTML=`<span class="pm-emoji">${p.emoji}</span>`}
+  track.appendChild(d);
+});
+
+// ── HERO BACKGROUND: realistic swirling soft-serve backdrop ──
+(function(){
+  const c=document.getElementById('hero3d');
+  if(!c||typeof THREE==='undefined')return;
+  const renderer=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setClearColor(0,0);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(55,1,.1,200);
+  cam.position.set(0,0,12);
+  scene.fog=new THREE.FogExp2(0xfdf8f0,0.038);
+  scene.add(new THREE.AmbientLight(0xffffff,.65));
+  const sun=new THREE.DirectionalLight(0xfff5e0,1.2);sun.position.set(5,10,8);scene.add(sun);
+  const rim=new THREE.DirectionalLight(0xffd6e8,.8);rim.position.set(-6,2,-4);scene.add(rim);
+  const bot=new THREE.DirectionalLight(0xe0f7ff,.4);bot.position.set(0,-6,3);scene.add(bot);
+
+  const COLORS=[0xf7c5d0,0xfde68a,0xb2e5de,0xddd5f5,0xfecba1,0xc8e6c2,0xf5cba7,0xe8e1d8];
+  const objs=[];
+
+  // Background blobs
+  for(let i=0;i<6;i++){
+    const m=new THREE.Mesh(
+      new THREE.SphereGeometry(1.4+Math.random()*.9,32,32),
+      new THREE.MeshPhongMaterial({color:COLORS[i%COLORS.length],transparent:true,opacity:.2,shininess:40})
+    );
+    m.position.set((Math.random()-.5)*20,(Math.random()-.5)*12,-9-Math.random()*5);
+    m.userData={vy:.04+Math.random()*.05,rx:.002,ry:.003,ph:Math.random()*6.28,amp:1,bx:m.position.x,layer:0};
+    scene.add(m);objs.push(m);
+  }
+  // Mid shapes
+  for(let i=0;i<10;i++){
+    const type=i%4;
+    let geo;
+    if(type===0)geo=new THREE.SphereGeometry(.32+Math.random()*.22,20,20);
+    else if(type===1)geo=new THREE.TorusGeometry(.28+Math.random()*.14,.1,14,28);
+    else if(type===2)geo=new THREE.CylinderGeometry(.07,.07,.45+Math.random()*.25,10);
+    else geo=new THREE.OctahedronGeometry(.22+Math.random()*.14);
+    const m=new THREE.Mesh(geo,new THREE.MeshPhongMaterial({color:COLORS[(i+2)%COLORS.length],shininess:90,transparent:true,opacity:.6}));
+    m.position.set((Math.random()-.5)*14,(Math.random()-.5)*8,-2-Math.random()*4);
+    m.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);
+    m.userData={vy:.09+Math.random()*.14,rx:(Math.random()-.5)*.5,ry:(Math.random()-.5)*.5,ph:Math.random()*6.28,amp:.5,bx:m.position.x,layer:1};
+    scene.add(m);objs.push(m);
+  }
+  // Foreground sprinkles
+  for(let i=0;i<14;i++){
+    const geo=i%2===0?new THREE.CylinderGeometry(.05,.05,.26+Math.random()*.14,10):new THREE.SphereGeometry(.07+Math.random()*.05,14,14);
+    const m=new THREE.Mesh(geo,new THREE.MeshPhongMaterial({color:COLORS[i%COLORS.length],shininess:130,transparent:true,opacity:.82}));
+    m.position.set((Math.random()-.5)*12,(Math.random()-.5)*7,1+Math.random()*2);
+    m.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,Math.random()*Math.PI);
+    m.userData={vy:.16+Math.random()*.2,rx:(Math.random()-.5)*.8,ry:(Math.random()-.5)*.8,ph:Math.random()*6.28,amp:.28,bx:m.position.x,layer:2};
+    scene.add(m);objs.push(m);
+  }
+  // Froyo cup on right
+  const fg=new THREE.Group();fg.position.set(3.0,-1.0,-0.5);
+  const cpPts=[];for(let i=0;i<=22;i++){const t=i/22;cpPts.push(new THREE.Vector2(.52+.4*t,-1.2+t*1.1));}
+  fg.add(new THREE.Mesh(new THREE.LatheGeometry(cpPts,48),new THREE.MeshPhongMaterial({color:0xffffff,shininess:70,transparent:true,opacity:.92,side:THREE.DoubleSide})));
+  const bnd=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,.3,48,1,true),new THREE.MeshPhongMaterial({color:0xf7c5d0,shininess:50,side:THREE.DoubleSide}));
+  bnd.position.y=-0.9;fg.add(bnd);
+  const pts2=[];for(let i=0;i<=180;i++){const t=i/180;const a=t*Math.PI*2*6;const r=.48*(1-t*.72);pts2.push(new THREE.Vector3(r*Math.cos(a),-.7+t*2.1,r*Math.sin(a)));}
+  const crv=new THREE.CatmullRomCurve3(pts2);
+  const tg2=new THREE.TubeGeometry(crv,280,.15,12,false);
+  const p2=tg2.attributes.position,cl2=new Float32Array(p2.count*3);
+  const cA=new THREE.Color(0xffd2e0),cB=new THREE.Color(0xfffefb),cM=new THREE.Color();
+  for(let i=0;i<p2.count;i++){const t=Math.min(Math.max((p2.getY(i)+.7)/2.1,0),1);cM.lerpColors(cA,cB,t);cl2[i*3]=cM.r;cl2[i*3+1]=cM.g;cl2[i*3+2]=cM.b;}
+  tg2.setAttribute('color',new THREE.BufferAttribute(cl2,3));
+  fg.add(new THREE.Mesh(tg2,new THREE.MeshPhongMaterial({vertexColors:true,shininess:110,specular:0xfff0f5})));
+  scene.add(fg);
+
+  let mx=0,my=0,t=0,lt=0;
+  addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*2;my=(e.clientY/innerHeight-.5)*2;},{passive:true});
+  function rs(){const w=c.clientWidth,ht=c.clientHeight;if(w&&ht){renderer.setSize(w,ht,false);cam.aspect=w/ht;cam.updateProjectionMatrix();}}
+  rs();addEventListener('resize',rs);
+  (function loop(ts){
+    requestAnimationFrame(loop);
+    const dt=Math.min((ts-lt)/1000,.05);lt=ts;t+=dt;
+    objs.forEach(o=>{
+      o.position.y+=o.userData.vy*dt;
+      o.position.x=o.userData.bx+Math.sin(t*.5+o.userData.ph)*o.userData.amp;
+      o.rotation.x+=o.userData.rx*dt;o.rotation.y+=o.userData.ry*dt;
+      const top=o.userData.layer===0?7.5:o.userData.layer===1?6:5;
+      if(o.position.y>top)o.position.y=-(top+1.5);
+    });
+    fg.rotation.y+=.38*dt;
+    fg.position.y=-1.0+Math.sin(t*.65)*.09;
+    cam.position.x+=(mx*1.8-cam.position.x)*.04;
+    cam.position.y+=(-my*1.0-cam.position.y)*.04;
+    cam.lookAt(0,0,0);
+    renderer.render(scene,cam);
+  })(0);
+})();
+</script>
+</body>
+</html>
