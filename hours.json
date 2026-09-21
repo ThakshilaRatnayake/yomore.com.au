@@ -1,32 +1,32 @@
 {
-  "updated": "2026-09-21T00:00:00.000Z",
-  "source": "seed (static hours from the site; replaced by Google on first sync)",
+  "updated": "2026-09-21T02:03:58.166Z",
+  "source": "google",
   "shops": {
     "brunswick": {
       "name": "Yo More Brunswick",
-      "placeId": null,
+      "placeId": "ChIJN-ve6rRD1moREklh5HiNQlA",
       "address": "377 Sydney Rd, Brunswick VIC 3056",
-      "businessStatus": null,
+      "businessStatus": "OPERATIONAL",
       "days": [
         {
           "day": "Monday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 1
             }
           ]
         },
         {
           "day": "Tuesday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 2
             }
           ]
         },
@@ -37,7 +37,7 @@
             {
               "open": "12:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 3
             }
           ]
         },
@@ -48,7 +48,7 @@
             {
               "open": "12:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 4
             }
           ]
         },
@@ -59,7 +59,7 @@
             {
               "open": "12:00",
               "close": "22:00",
-              "closeDay": null
+              "closeDay": 5
             }
           ]
         },
@@ -70,7 +70,7 @@
             {
               "open": "12:00",
               "close": "22:00",
-              "closeDay": null
+              "closeDay": 6
             }
           ]
         },
@@ -81,7 +81,7 @@
             {
               "open": "12:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 0
             }
           ]
         }
@@ -89,62 +89,62 @@
     },
     "geelong": {
       "name": "Yo More Geelong",
-      "placeId": null,
+      "placeId": "ChIJUZLMqMcV1GoRRfmq14WjkUk",
       "address": "85 Ryrie St, Geelong VIC 3220",
-      "businessStatus": null,
+      "businessStatus": "OPERATIONAL",
       "days": [
         {
           "day": "Monday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 1
             }
           ]
         },
         {
           "day": "Tuesday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 2
             }
           ]
         },
         {
           "day": "Wednesday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 3
             }
           ]
         },
         {
           "day": "Thursday",
-          "hours": "2 – 9:30 pm",
+          "hours": "1 – 9:30 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 4
             }
           ]
         },
         {
           "day": "Friday",
-          "hours": "2 – 10 pm",
+          "hours": "1 – 10 pm",
           "periods": [
             {
-              "open": "14:00",
+              "open": "13:00",
               "close": "22:00",
-              "closeDay": null
+              "closeDay": 5
             }
           ]
         },
@@ -155,7 +155,7 @@
             {
               "open": "13:00",
               "close": "22:00",
-              "closeDay": null
+              "closeDay": 6
             }
           ]
         },
@@ -166,7 +166,7 @@
             {
               "open": "13:00",
               "close": "21:30",
-              "closeDay": null
+              "closeDay": 0
             }
           ]
         }
