@@ -24,6 +24,8 @@
 .hero-photo{width:100%;max-width:440px;border-radius:32px;box-shadow:0 30px 80px rgba(26,18,8,.22);transform:rotate(2deg);transition:transform .4s ease;position:relative;z-index:2}
 .hero-photo:hover{transform:rotate(0deg) scale(1.02)}
 .hero-photo img{width:100%;height:auto;display:block;border-radius:32px}
+.hero-photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:32px;opacity:0;transition:opacity .8s ease}
+.hero-photo video.on{opacity:1}
 .photo-sticker{position:absolute;z-index:3;background:#fff;padding:10px 20px;border-radius:var(--r);font-family:var(--font-display);font-style:italic;font-size:16px;box-shadow:0 8px 24px rgba(26,18,8,.15);animation:stickerBob 4s ease-in-out infinite}
 .ps1{top:8%;left:-4%;color:var(--pink-deep)}
 .ps2{bottom:12%;right:-5%;color:var(--green-deep);animation-delay:1.4s}
@@ -299,6 +301,22 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="shared.js"></script>
+<script>
+// Hero video: layered over the photo only when motion and data allow. The photo stays as poster and fallback.
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var c=navigator.connection;if(c&&(c.saveData||/(^|[^4-9])[23]g/.test(c.effectiveType||'')))return;
+  var box=document.querySelector('.hero-photo'),img=box&&box.querySelector('img');if(!img)return;
+  var v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;v.preload='metadata';
+  v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('aria-hidden','true');v.tabIndex=-1;
+  v.style.borderRadius=getComputedStyle(img).borderRadius;
+  v.src='photos/hero.mp4';
+  v.addEventListener('playing',function(){v.classList.add('on')},{once:true});
+  box.appendChild(v);
+  var p=v.play();if(p&&p.catch)p.catch(function(){v.remove()});
+})();
+</script>
+
 <script>
 // ── TIKTOK IFRAME FALLBACK ──
 window.addEventListener('load',function(){
