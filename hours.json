@@ -1,0 +1,176 @@
+{
+  "updated": "2026-09-21T00:00:00.000Z",
+  "source": "seed (static hours from the site; replaced by Google on first sync)",
+  "shops": {
+    "brunswick": {
+      "name": "Yo More Brunswick",
+      "placeId": null,
+      "address": "377 Sydney Rd, Brunswick VIC 3056",
+      "businessStatus": null,
+      "days": [
+        {
+          "day": "Monday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "hours": "12 – 9:30 pm",
+          "periods": [
+            {
+              "open": "12:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Thursday",
+          "hours": "12 – 9:30 pm",
+          "periods": [
+            {
+              "open": "12:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Friday",
+          "hours": "12 – 10 pm",
+          "periods": [
+            {
+              "open": "12:00",
+              "close": "22:00",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "hours": "12 – 10 pm",
+          "periods": [
+            {
+              "open": "12:00",
+              "close": "22:00",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Sunday",
+          "hours": "12 – 9:30 pm",
+          "periods": [
+            {
+              "open": "12:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        }
+      ]
+    },
+    "geelong": {
+      "name": "Yo More Geelong",
+      "placeId": null,
+      "address": "85 Ryrie St, Geelong VIC 3220",
+      "businessStatus": null,
+      "days": [
+        {
+          "day": "Monday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Thursday",
+          "hours": "2 – 9:30 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Friday",
+          "hours": "2 – 10 pm",
+          "periods": [
+            {
+              "open": "14:00",
+              "close": "22:00",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "hours": "1 – 10 pm",
+          "periods": [
+            {
+              "open": "13:00",
+              "close": "22:00",
+              "closeDay": null
+            }
+          ]
+        },
+        {
+          "day": "Sunday",
+          "hours": "1 – 9:30 pm",
+          "periods": [
+            {
+              "open": "13:00",
+              "close": "21:30",
+              "closeDay": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

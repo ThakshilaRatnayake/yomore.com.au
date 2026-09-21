@@ -208,8 +208,8 @@
   <h2 class="section-title reveal reveal-delay-1">The stuff we <em>actually care about</em></h2>
   <div class="values-grid">
     <div class="value-card reveal"><span class="value-icon">🌿</span><div><h3>Real ingredients</h3><p>No artificial flavours, no shortcuts. Real fruit, real culture, recipes we're proud of.</p></div></div>
-    <div class="value-card reveal reveal-delay-1"><span class="value-icon">🌾</span><div><h3>Gluten free first</h3><p>Six of our eight yogurts are gluten free — only Biscoff and Cookies &amp; Cream contain gluten.</p></div></div>
-    <div class="value-card reveal reveal-delay-2"><span class="value-icon">🌱</span><div><h3>Vegan options</h3><p>Our Charcoal Coconut is 100% plant-based, creamy and refreshing.</p></div></div>
+    <div class="value-card reveal reveal-delay-1"><span class="value-icon">🌾</span><div><h3>Gluten free first</h3><p>Five of our eight yogurts are gluten free — only Biscoff, Cookies &amp; Cream and Tiramisu contain gluten.</p></div></div>
+    <div class="value-card reveal reveal-delay-2"><span class="value-icon">🌱</span><div><h3>Vegan options</h3><p>Our Strawberry is 100% plant-based, dairy free, light and fruity.</p></div></div>
     <div class="value-card reveal reveal-delay-3"><span class="value-icon">✨</span><h3>Fresh daily</h3><p>Every flavour is churned fresh each morning. If it's in the machine, it was made today.</p></div>
   </div>
 </section>
@@ -319,12 +319,12 @@ promo.addEventListener('click',e=>{if(e.target===promo)promo.classList.remove('o
 
 // ── FLAVOURS (compact tiles + modal) ──
 const flavors=[
-  {name:"Charcoal Coconut",desc:"Activated charcoal meets tropical coconut — striking dark colour, light clean taste. Vegan, gluten free and low fat.",icon:"🥥",bg:"#3A3A3A",color:"#e8e8e8",tag:"Vegan · GF · Low fat",gf:true,loc:"both"},
-  {name:"Wildberry Cheesecake",desc:"Rich creamy cheesecake swirled with wild berry — indulgent, fruity and gluten free.",icon:"🫐",bg:"#C9A8D4",color:"#3D0A4F",tag:"Gluten free",gf:true,loc:"both"},
+  {name:"Tiramisu",desc:"Espresso-soaked sponge, mascarpone cream and a dusting of cocoa — the Italian classic, churned into silky froyo.",icon:"☕",bg:"#D9C4B0",color:"#4A2C17",tag:"Coffee · Cocoa",gf:false,loc:"both"},
+  {name:"Chocolate",desc:"Deep, rich cocoa in a smooth creamy froyo — pure chocolate, nothing to hide behind. Gluten free.",icon:"🍫",bg:"#6B3F2A",color:"#F5E6D8",tag:"Gluten free",gf:true,loc:"both"},
   {name:"Signature Tart",desc:"The original Yo More classic. Clean, tangy and refreshing — gluten free and low fat.",icon:"✨",bg:"#FDE68A",color:"#B45309",tag:"GF · Low fat",gf:true,loc:"both"},
   {name:"Acai",desc:"Deep, rich acai loaded with antioxidants. Gluten free and packed with natural goodness.",icon:"🫐",bg:"#DDD5F5",color:"#5B3FA0",tag:"GF · Antioxidants",gf:true,loc:"both"},
-  {name:"Lime Watermelon",desc:"Zesty lime meets sweet juicy watermelon — refreshing, vibrant and totally gluten free.",icon:"🍉",bg:"#C8F5D0",color:"#1A6B35",tag:"GF · Low fat",gf:true,loc:"both"},
-  {name:"Crème Brûlée",desc:"Silky custard with caramelised sugar warmth — elegant, rich and gluten free.",icon:"🍮",bg:"#FCEBBF",color:"#8B5E17",tag:"Gluten free",gf:true,loc:"both"},
+  {name:"Strawberry",desc:"Sweet ripe strawberry in a 100% plant-based froyo — light, fruity and completely dairy free. Vegan and gluten free.",icon:"🍓",bg:"#FFC9D6",color:"#A3213F",tag:"Vegan · GF",gf:true,loc:"both"},
+  {name:"Cinnamon Banana",desc:"Ripe banana swirled with warm cinnamon — cosy, sweet and naturally gluten free.",icon:"🍌",bg:"#F7E3A1",color:"#7A4A12",tag:"Gluten free",gf:true,loc:"both"},
   {name:"Cookies & Cream",desc:"Crushed chocolate cookies blended into smooth creamy froyo — a crowd favourite every time.",icon:"🍪",bg:"#E8E1D8",color:"#3D2B1F",tag:"Classic",gf:false,loc:"both"},
   {name:"Bischoff",desc:"Caramelised Belgian biscuit spice churned into silky froyo — dangerously good.",icon:"🍯",bg:"#F5CBA7",color:"#884714",tag:"Cult favourite",gf:false,loc:"both"},
 ];
@@ -366,7 +366,7 @@ document.getElementById('flavorFilters').addEventListener('click',e=>{
 });
 
 // ── TICKER ──
-const ti=["Charcoal Coconut","Wildberry Cheesecake","Signature Tart","Acaí","Lime Watermelon","Crème Brûlée","Cookies & Cream","Bischoff"];
+const ti=["Tiramisu","Chocolate","Signature Tart","Acaí","Strawberry","Cinnamon Banana","Cookies & Cream","Bischoff"];
 const inner=document.getElementById('tickerInner');
 [...ti,...ti].forEach((x,i,a)=>{const s=document.createElement('span');s.className='ticker-item';s.innerHTML=x+(i<a.length-1?' <span class="ticker-dot">✦</span>':'');inner.appendChild(s)});
 
