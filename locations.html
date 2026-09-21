@@ -3,11 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find a Shop — Yo More</title>
+<title>Find a Yo More Shop — Brunswick & Geelong, VIC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- seo -->
+<meta name="description" content="Yo More frozen yogurt shops at 377 Sydney Rd Brunswick and 85 Ryrie St Geelong. Opening hours, phone numbers and directions for both shops.">
+<link rel="canonical" href="https://yomore.com.au/locations.html">
+<meta name="theme-color" content="#FDF8F0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Yo More">
+<meta property="og:title" content="Find a Yo More Shop — Brunswick & Geelong, VIC">
+<meta property="og:description" content="Yo More frozen yogurt shops at 377 Sydney Rd Brunswick and 85 Ryrie St Geelong. Opening hours, phone numbers and directions for both shops.">
+<meta property="og:url" content="https://yomore.com.au/locations.html">
+<meta property="og:image" content="https://yomore.com.au/photos/froyo-cups.webp">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="991">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="AU-VIC">
+<!-- Search Console: paste the HTML-tag verification here, or verify via DNS instead.
+<meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"> -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Yo More shops","url":"https://yomore.com.au/locations.html","hasPart":[{"@id":"https://yomore.com.au/brunswick.html#shop"},{"@id":"https://yomore.com.au/geelong.html#shop"}]}]}</script>
+<script src="tag.js"></script>
+<!-- /seo -->
 <style>
 .page-hero{background:linear-gradient(160deg,#FDF8F0 0%,#FCEEF2 100%)}
 .location-section{background:var(--ink);color:var(--cream)}
@@ -52,9 +72,9 @@
 <section class="location-section">
   <div class="location-cards">
 
-    <div class="location-card reveal">
+    <div class="location-card reveal" data-shop="brunswick">
       <span class="location-badge" id="badge-brunswick">Now open</span>
-      <h3>Yo More Brunswick</h3>
+      <h3><a href="brunswick.html" style="color:inherit;text-decoration:none">Yo More Brunswick</a></h3>
       <p><a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" rel="noopener" style="color:rgba(255,255,255,.6);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;">377 Sydney Rd<br>Brunswick VIC 3056</a></p>
       <p style="margin-top:10px;"><a href="tel:0391243885" style="color:rgba(255,255,255,.45);text-decoration:none;">(03) 9124 3885</a></p>
       <div class="location-hours">
@@ -68,13 +88,13 @@
           <tr><td>Sunday</td><td>12 – 9:30 pm</td></tr>
         </table>
         <p class="hours-note" id="note-brunswick"></p>
-        <a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" class="loc-link">Get directions →</a>
+        <a href="https://maps.google.com/?q=377+Sydney+Rd+Brunswick+VIC+3056" target="_blank" rel="noopener" class="loc-link">Get directions →</a> &nbsp; <a href="brunswick.html" class="loc-link">About this shop →</a>
       </div>
     </div>
 
-    <div class="location-card reveal reveal-delay-1">
+    <div class="location-card reveal reveal-delay-1" data-shop="geelong">
       <span class="location-badge" id="badge-geelong">Now open</span>
-      <h3>Yo More Geelong</h3>
+      <h3><a href="geelong.html" style="color:inherit;text-decoration:none">Yo More Geelong</a></h3>
       <p><a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" rel="noopener" style="color:rgba(255,255,255,.6);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px;">85 Ryrie St<br>Geelong VIC 3220</a></p>
       <p style="margin-top:10px;"><a href="tel:0391254202" style="color:rgba(255,255,255,.45);text-decoration:none;">(03) 9125 4202</a></p>
       <div class="location-hours">
@@ -88,7 +108,7 @@
           <tr><td>Sunday</td><td>1 – 9:30 pm</td></tr>
         </table>
         <p class="hours-note" id="note-geelong"></p>
-        <a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" class="loc-link">Get directions →</a>
+        <a href="https://maps.google.com/?q=85+Ryrie+St+Geelong+VIC+3220" target="_blank" rel="noopener" class="loc-link">Get directions →</a> &nbsp; <a href="geelong.html" class="loc-link">About this shop →</a>
       </div>
     </div>
 
@@ -118,6 +138,8 @@
     </ul></div>
     <div class="footer-col"><h4>Company</h4><ul>
       <li><a href="locations.html">Locations</a></li>
+      <li><a href="brunswick.html">Brunswick</a></li>
+      <li><a href="geelong.html">Geelong</a></li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="rewards.html">Gift cards & loyalty</a></li>
     </ul></div>

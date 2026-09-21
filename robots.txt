@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Sitemap: https://yomore.com.au/sitemap.xml
