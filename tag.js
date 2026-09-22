@@ -3,7 +3,7 @@
 //
 // Fill these in once the accounts exist. The tag stays dormant while any ID
 // is still a placeholder, so this file is safe to ship as-is.
-var YM_GA4_ID  = 'G-XXXXXXXXXX';      // GA4 > Admin > Data streams > Measurement ID
+var YM_GA4_ID  = 'G-54SP0DMEL3';      // GA4 > Admin > Data streams > Measurement ID
 var YM_ADS_ID  = 'AW-XXXXXXXXXX';     // Google Ads > Tools > Conversions > Google tag ID
 var YM_ADS_LABELS = {                 // Google Ads conversion labels (one per action)
   call: 'XXXXXXXXXXXXXXXXXXX',        // "Phone call from website"
