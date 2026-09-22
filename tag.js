@@ -1,13 +1,17 @@
-// Google tag: GA4 + Google Ads, plus the conversions that matter for a shop
-// (phone taps and "get directions" taps). Loaded in <head> on every page.
+// Google tag for yomore.com.au: GA4 page views plus the two interactions that
+// matter for a shop - phone taps and "get directions" taps - on every page.
 //
-// Fill these in once the accounts exist. The tag stays dormant while any ID
-// is still a placeholder, so this file is safe to ship as-is.
+// Google Ads conversions are NOT wired through this file. The Ads account
+// (242-752-0168) imports the call_click and get_directions events straight from
+// the GA4 property as the conversion actions "Yo More - Phone call from website"
+// and "Yo More - Get directions". Sending them again through an AW- tag would
+// double count, so the YM_ADS_* fields below stay empty on purpose. They exist
+// only if you ever switch to native Ads conversion tags instead of the import.
 var YM_GA4_ID  = 'G-54SP0DMEL3';      // GA4 > Admin > Data streams > Measurement ID
-var YM_ADS_ID  = 'AW-XXXXXXXXXX';     // Google Ads > Tools > Conversions > Google tag ID
-var YM_ADS_LABELS = {                 // Google Ads conversion labels (one per action)
-  call: 'XXXXXXXXXXXXXXXXXXX',        // "Phone call from website"
-  directions: 'XXXXXXXXXXXXXXXXXXX'   // "Get directions"
+var YM_ADS_ID  = 'AW-XXXXXXXXXX';     // unused - see note above
+var YM_ADS_LABELS = {                 // unused - see note above
+  call: 'XXXXXXXXXXXXXXXXXXX',
+  directions: 'XXXXXXXXXXXXXXXXXXX'
 };
 
 (function(){
