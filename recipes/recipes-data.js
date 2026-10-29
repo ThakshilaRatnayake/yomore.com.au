@@ -36,22 +36,6 @@ window.RECIPES = [
     ]
   },
   {
-    name: 'Wild Berry Cheesecake',
-    ingredients: [
-      { name: 'Water', qty: '4 L' },
-      { name: 'Rubicone SoftYoghurt Mild', code: 'N702', qty: '1 bag' },
-      { name: 'Rubicone Cheesecake', code: 'F107', qty: '170 g' },
-      { name: 'Rubicone Wild Berry Seedless', code: 'F247', qty: '320 g' }
-    ],
-    steps: [
-      'Add water 4 L',
-      'Add 1 bag Rubicone SoftYoghurt Mild',
-      'Add 170 g Rubicone Cheesecake',
-      'Add 320 g Rubicone Wild Berry Seedless',
-      'Mix well with the electric mixer'
-    ]
-  },
-  {
     name: 'Creme Brulee',
     ingredients: [
       { name: 'Water', qty: '4 L' },
@@ -62,18 +46,6 @@ window.RECIPES = [
       'Add water 4 L',
       'Add 1 bag Rubicone SoftYoghurt Mild',
       'Add 290 g Rubicone Crème Brûlée',
-      'Mix well with the electric mixer'
-    ]
-  },
-  {
-    name: 'Charcoal Coconut',
-    ingredients: [
-      { name: 'Water', qty: '3 L' },
-      { name: 'Rubicone Black Hawaii', code: 'F989', qty: '1 bag' }
-    ],
-    steps: [
-      'Add water 3 L',
-      'Add 1 bag Rubicone Black Hawaii',
       'Mix well with the electric mixer'
     ]
   },
