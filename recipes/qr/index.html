@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Staff Recipe Book QR — Yo More</title>
+<!-- Printable A4 sign for the staff recipe book. QR made by scripts/make-recipes-qr.cjs -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E3D8;color:#1A1208;font-family:'DM Sans',system-ui,sans-serif;padding:24px 16px}
+.toolbar{max-width:210mm;margin:0 auto 16px;display:flex;gap:12px;justify-content:center}
+.toolbar button,.toolbar a{font:600 16px 'DM Sans',sans-serif;padding:12px 24px;border-radius:999px;border:0;background:#1A1208;color:#FDF8F0;cursor:pointer;text-decoration:none}
+.toolbar a{background:transparent;color:#1A1208;border:1.5px solid rgba(26,18,8,.3)}
+.sheet{width:210mm;max-width:100%;min-height:297mm;margin:0 auto;background:#fff;box-shadow:0 4px 30px rgba(26,18,8,.12);
+  padding:22mm 18mm;display:flex;flex-direction:column;align-items:center;text-align:center}
+h1{font-family:'Fraunces',Georgia,serif;font-size:30pt;line-height:1.1;letter-spacing:.02em;margin-bottom:14mm}
+.qr{width:12cm;max-width:100%;height:auto;display:block}
+.scan{font-size:22pt;font-weight:600;margin-top:10mm}
+.hint{font-size:14pt;color:#5C4A2A;margin-top:5mm;max-width:150mm}
+.url{font-size:10pt;color:#5C4A2A;margin-top:auto;padding-top:12mm;letter-spacing:.02em}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff;padding:0}
+  .toolbar{display:none!important}
+  .sheet{width:210mm;height:297mm;min-height:0;max-width:none;margin:0;box-shadow:none;break-after:avoid;overflow:hidden}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button type="button" onclick="window.print()">Print</button>
+  <a href="/recipes/">Open recipe book</a>
+</div>
+<main class="sheet">
+  <h1>YO MORE – STAFF RECIPE BOOK</h1>
+  <img class="qr" src="/recipes/qr/recipes-qr.svg" width="1200" height="1200" alt="QR code linking to https://yomore.com.au/recipes">
+  <p class="scan">Scan to look up any mix recipe</p>
+  <p class="hint">Search by flavour, ingredient or code (e.g. mango, N702, biscoff)</p>
+  <p class="url">https://yomore.com.au/recipes</p>
+</main>
+</body>
+</html>

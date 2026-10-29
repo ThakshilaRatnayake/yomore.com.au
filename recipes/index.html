@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FDF8F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17110A" media="(prefers-color-scheme: dark)">
+<title>Staff Recipe Book — Yo More</title>
+<!-- Staff only: not linked from the site, not in the sitemap, no analytics tag. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FDF8F0;--card:#FFFFFF;--ink:#1A1208;--ink-mid:#5C4A2A;--ink-light:#8A7052;
+  --line:rgba(26,18,8,.10);--accent:#D4567A;--accent-ink:#FFFFFF;
+  --chip-bg:#F3EADB;--chip-ink:#5C4A2A;--mark-bg:#FDE68A;--mark-ink:#1A1208;
+  --field:#FFFFFF;--bar:rgba(253,248,240,.94);--shadow:0 2px 14px rgba(26,18,8,.06);
+  --font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#17110A;--card:#231A10;--ink:#F7EFE3;--ink-mid:#D9C8AE;--ink-light:#AE987A;
+    --line:rgba(247,239,227,.12);--accent:#F08AA6;--accent-ink:#17110A;
+    --chip-bg:#3A2D1E;--chip-ink:#F0E2CC;--mark-bg:#E7B93C;--mark-ink:#17110A;
+    --field:#2C2115;--bar:rgba(23,17,10,.94);--shadow:none;
+  }
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.45;min-height:100vh}
+
+/* Sticky search bar */
+.bar{position:sticky;top:0;z-index:10;background:var(--bar);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left))}
+.bar-inner{max-width:640px;margin:0 auto}
+.brand{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.brand b{font-family:var(--font-display);font-size:20px;letter-spacing:.02em}
+.brand span{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light)}
+.search{position:relative}
+.search input{width:100%;height:58px;border:2px solid var(--line);border-radius:16px;background:var(--field);color:var(--ink);
+  font:500 20px/1 var(--font-body);padding:0 58px 0 18px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--ink-light);font-weight:400}
+.search input:focus{border-color:var(--accent)}
+.search input::-webkit-search-cancel-button{display:none}
+.clear{position:absolute;right:5px;top:5px;width:48px;height:48px;border:0;border-radius:12px;background:transparent;color:var(--ink-mid);
+  font-size:30px;line-height:1;cursor:pointer}
+.clear:active{background:var(--chip-bg)}
+.count{margin-top:8px;font-size:15px;font-weight:600;color:var(--ink-mid)}
+
+/* Cards */
+main{max-width:640px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 12px;width:100%;min-height:84px;padding:16px 18px;border:0;background:transparent;
+  color:inherit;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.head:active{background:var(--chip-bg)}
+.head:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;border-radius:20px}
+.name{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.15}
+.meta{grid-column:1;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:16px;color:var(--ink-mid)}
+.meta i{font-style:normal;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-right:5px}
+.meta .water b{color:var(--ink);font-weight:700}
+.chev{grid-column:2;grid-row:1/span 2;width:40px;height:40px;border-radius:50%;background:var(--chip-bg);display:grid;place-items:center;transition:transform .2s}
+.chev::before{content:"";width:10px;height:10px;border-right:3px solid var(--ink-mid);border-bottom:3px solid var(--ink-mid);transform:translateY(-2px) rotate(45deg)}
+.head[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.body{padding:0 18px 20px;border-top:1px solid var(--line)}
+.body h3{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin:18px 0 6px}
+
+table{width:100%;border-collapse:collapse}
+td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.qty{text-align:right;white-space:nowrap;font-weight:700;padding-left:14px;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--chip-bg);color:var(--chip-ink);
+  font-size:13px;font-weight:700;letter-spacing:.04em;vertical-align:2px;white-space:nowrap}
+
+ol{list-style:none;counter-reset:step}
+ol li{counter-increment:step;position:relative;padding:8px 0 8px 46px;min-height:44px}
+ol li::before{content:counter(step);position:absolute;left:0;top:6px;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  font-size:16px;font-weight:700;display:grid;place-items:center}
+
+mark{background:var(--mark-bg);color:var(--mark-ink);border-radius:4px;padding:0 1px}
+.chip mark{background:var(--mark-bg);color:var(--mark-ink)}
+.empty{text-align:center;color:var(--ink-mid);padding:40px 10px;font-size:18px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-inner">
+    <div class="brand"><b>Yo More</b><span>Staff recipe book</span></div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Flavour, ingredient or code" aria-label="Search recipes"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+      <button class="clear" id="clear" type="button" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+</header>
+
+<main>
+  <div id="list"></div>
+  <p class="empty" id="empty" hidden></p>
+</main>
+
+<!-- All recipe data lives in recipes-data.js -->
+<script src="/recipes/recipes-data.js"></script>
+<script>
+(function(){
+  var RECIPES = window.RECIPES || [];
+  var q = document.getElementById('q');
+  var clearBtn = document.getElementById('clear');
+  var list = document.getElementById('list');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+
+  // Case- and accent-insensitive text, with a map from each folded
+  // character back to its position in the original string (for highlighting).
+  function fold(str){
+    var norm = '', map = [];
+    for (var i = 0; i < str.length; i++){
+      var f = str[i].normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      for (var j = 0; j < f.length; j++){ norm += f[j]; map.push(i); }
+    }
+    return { norm: norm, map: map };
+  }
+  function esc(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  // Escaped text with every occurrence of every term wrapped in <mark>.
+  function hl(text, terms){
+    if (!terms.length) return esc(text);
+    var f = fold(text), ranges = [];
+    terms.forEach(function(t){
+      var at = f.norm.indexOf(t);
+      while (at !== -1){
+        ranges.push([f.map[at], f.map[at + t.length - 1] + 1]);
+        at = f.norm.indexOf(t, at + 1);
+      }
+    });
+    if (!ranges.length) return esc(text);
+    ranges.sort(function(a, b){ return a[0] - b[0]; });
+    var merged = [ranges[0]];
+    ranges.slice(1).forEach(function(r){
+      var last = merged[merged.length - 1];
+      if (r[0] <= last[1]) last[1] = Math.max(last[1], r[1]); else merged.push(r);
+    });
+    var out = '', pos = 0;
+    merged.forEach(function(r){
+      out += esc(text.slice(pos, r[0])) + '<mark>' + esc(text.slice(r[0], r[1])) + '</mark>';
+      pos = r[1];
+    });
+    return out + esc(text.slice(pos));
+  }
+
+  // Searchable text per recipe: flavour name, ingredient names, product codes.
+  var haystacks = RECIPES.map(function(r){
+    var parts = [r.name];
+    r.ingredients.forEach(function(ing){ parts.push(ing.name); if (ing.code) parts.push(ing.code); });
+    return fold(parts.join(' \u0000 ')).norm;
+  });
+  function baseOf(r){
+    for (var i = 0; i < r.ingredients.length; i++) if (!/^water$/i.test(r.ingredients[i].name)) return r.ingredients[i];
+    return null;
+  }
+  function waterOf(r){
+    for (var i = 0; i < r.ingredients.length; i++) if (/^water$/i.test(r.ingredients[i].name)) return r.ingredients[i].qty;
+    return '';
+  }
+
+  // Open/closed state: cards the user opened stay open; when a search leaves
+  // 1–2 results those open automatically unless the user closed them.
+  var manual = {}, suppressed = {}, auto = false, terms = [];
+  function isOpen(i){ return !!manual[i] || (auto && !suppressed[i]); }
+
+  function cardHTML(r, i){
+    var base = baseOf(r), water = waterOf(r), open = isOpen(i);
+    var h = '<article class="card">' +
+      '<button class="head" type="button" data-i="' + i + '" aria-expanded="' + open + '" aria-controls="r' + i + '">' +
+        '<span class="name">' + hl(r.name, terms) + '</span>' +
+        '<span class="meta">' +
+          (base ? '<span><i>Base</i>' + hl(base.name, terms) + '</span>' : '') +
+          (water ? '<span class="water"><i>Water</i><b>' + esc(water) + '</b></span>' : '') +
+        '</span>' +
+        '<span class="chev" aria-hidden="true"></span>' +
+      '</button>' +
+      '<div class="body" id="r' + i + '"' + (open ? '' : ' hidden') + '>' +
+        '<h3>Ingredients</h3><table><tbody>';
+    r.ingredients.forEach(function(ing){
+      h += '<tr><td>' + hl(ing.name, terms) +
+        (ing.code ? '<span class="chip">' + hl(ing.code, terms) + '</span>' : '') +
+        '</td><td class="qty">' + esc(ing.qty) + '</td></tr>';
+    });
+    h += '</tbody></table><h3>Method</h3><ol>';
+    r.steps.forEach(function(s){ h += '<li>' + esc(s) + '</li>'; });
+    return h + '</ol></div></article>';
+  }
+
+  function render(){
+    var raw = q.value.trim();
+    terms = fold(raw).norm.split(/\s+/).filter(Boolean);
+    var shown = [];
+    RECIPES.forEach(function(r, i){
+      if (terms.every(function(t){ return haystacks[i].indexOf(t) !== -1; })) shown.push(i);
+    });
+    auto = terms.length > 0 && shown.length > 0 && shown.length <= 2;
+    list.innerHTML = shown.map(function(i){ return cardHTML(RECIPES[i], i); }).join('');
+    countEl.textContent = shown.length + ' of ' + RECIPES.length + ' recipes';
+    emptyEl.hidden = shown.length > 0;
+    if (!shown.length) emptyEl.textContent = 'No recipe matches “' + raw + '”.';
+    clearBtn.hidden = !raw;
+  }
+
+  q.addEventListener('input', function(){
+    suppressed = {};
+    render();
+    if (window.scrollY > 0) window.scrollTo(0, 0);
+  });
+  q.addEventListener('keydown', function(e){ if (e.key === 'Enter') q.blur(); });
+  clearBtn.addEventListener('click', function(){ q.value = ''; suppressed = {}; render(); q.focus(); });
+
+  list.addEventListener('click', function(e){
+    var btn = e.target.closest('.head');
+    if (!btn) return;
+    var i = +btn.getAttribute('data-i');
+    if (isOpen(i)){ delete manual[i]; if (auto) suppressed[i] = true; }
+    else { manual[i] = true; delete suppressed[i]; }
+    var open = isOpen(i);
+    btn.setAttribute('aria-expanded', open);
+    document.getElementById('r' + i).hidden = !open;
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
