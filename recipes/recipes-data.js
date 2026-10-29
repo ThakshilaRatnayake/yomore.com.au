@@ -136,5 +136,33 @@ window.RECIPES = [
       'Add 400 g Rubicone Butterscotch',
       'Mix well with the electric mixer'
     ]
+  },
+  {
+    name: 'Strawberry',
+    ingredients: [
+      { name: 'Water', qty: '4 L' },
+      { name: 'Rubicone Vegan Mix', qty: '1 bag' },
+      { name: 'Strawberry Syrup', qty: '300 g' }
+    ],
+    steps: [
+      'Add water 4 L',
+      'Add 1 bag Rubicone Vegan Mix',
+      'Add 300 g Strawberry Syrup',
+      'Mix well with the electric mixer'
+    ]
+  },
+  {
+    name: 'Chocolate',
+    ingredients: [
+      { name: 'Water', qty: '4 L' },
+      { name: 'Rubicone SoftYoghurt Mild', code: 'N702', qty: '1 bag' },
+      { name: 'Rubicone Coco Powder', code: 'F827', qty: '300 g' }
+    ],
+    steps: [
+      'Dissolve 300 g Rubicone Coco Powder in 1 L of hot water',
+      'Add this to the remaining 3 L of cold water',
+      'Add 1 bag Rubicone SoftYoghurt Mild',
+      'Mix well with the electric mixer'
+    ]
   }
 ];
