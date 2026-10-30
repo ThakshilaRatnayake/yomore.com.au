@@ -86,12 +86,14 @@ window.RECIPES = [
     ingredients: [
       { name: 'Water', qty: '4 L' },
       { name: 'Rubicone SoftYoghurt Mild', code: 'N702', qty: '1 bag' },
-      { name: 'Rubicone Mango Alphonso', qty: '320 g' }
+      { name: 'Rubicone Mango Alphonso', qty: '320 g' },
+      { name: 'Sodely Yuzu Lemon', qty: '1 can (250 ml)' }
     ],
     steps: [
       'Add water 4 L',
       'Add 1 bag Rubicone SoftYoghurt Mild',
       'Add 320 g Rubicone Mango Alphonso',
+      'Add 1 can (250 ml) Sodely Yuzu Lemon',
       'Mix well with the electric mixer'
     ]
   },
